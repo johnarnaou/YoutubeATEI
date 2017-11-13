@@ -21,6 +21,7 @@ namespace YouTubeAtei
             progressBar1.Visible = false;
             qualityBox.SelectedIndex = 0;
             typeBox.SelectedIndex = 0;
+            convertBox.SelectedIndex = 1;
         }
 
         private void downBT_Click(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace YouTubeAtei
                     progressBar1.Visible = false;
                     progressLB.Text = "Converting... PLEASE WAIT!";
                     toMp3Convert(prms);
+                    File.Delete(file);
                 }
                 
                 progressLB.Text = "Done!";

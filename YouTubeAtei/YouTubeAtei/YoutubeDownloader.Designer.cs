@@ -43,16 +43,19 @@
             // 
             // downBT
             // 
+            this.downBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.downBT.Location = new System.Drawing.Point(423, 267);
             this.downBT.Name = "downBT";
             this.downBT.Size = new System.Drawing.Size(75, 23);
             this.downBT.TabIndex = 0;
-            this.downBT.Text = "Download";
+            this.downBT.Text = "Start";
             this.downBT.UseVisualStyleBackColor = true;
             this.downBT.Click += new System.EventHandler(this.downBT_Click);
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
@@ -62,6 +65,8 @@
             // 
             // urlTB
             // 
+            this.urlTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.urlTB.Location = new System.Drawing.Point(47, 6);
             this.urlTB.Name = "urlTB";
             this.urlTB.Size = new System.Drawing.Size(451, 20);
@@ -100,6 +105,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(269, 55);
             this.label2.Name = "label2";
@@ -130,6 +136,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(148, 122);
             this.label4.Name = "label4";
@@ -139,6 +148,9 @@
             // 
             // convertBox
             // 
+            this.convertBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.convertBox.FormattingEnabled = true;
             this.convertBox.Items.AddRange(new object[] {
             "Video",
