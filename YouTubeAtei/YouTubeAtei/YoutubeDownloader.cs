@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -35,46 +36,35 @@ namespace YouTubeAtei
                 progressLB.Text = "Preparing...";
                 IEnumerable<VideoInfo> videoInfos = DownloadUrlResolver.GetDownloadUrls(url);
 
-                if (getConvertValue() == "Video")
-                {
-                    VideoInfo video = videoInfos.First(info => info.VideoType == getVideoType() && info.Resolution == getQuality());
-
-                    if (video.RequiresDecryption)
-                    {
-                        DownloadUrlResolver.DecryptDownloadUrl(video);
-                    }
-
-                    var videoDownloader = new VideoDownloader(video, Path.Combine("C:/Users/johnarnaou/Desktop", video.Title + video.VideoExtension));
-
-                    progressBar1.Visible = true;
-                    progressBar1.Value = 0;
-
-                    progressLB.Text = "Dowlonading..";
-
-                    videoDownloader.DownloadProgressChanged += (sender, args) => progressBar1.Value = (int)Math.Round(args.ProgressPercentage);
+                VideoInfo video = videoInfos.First(info => info.VideoType == getVideoType() && info.Resolution == getQuality());
 
 
-                    videoDownloader.Execute();
-                } else if(getConvertValue() == "Mp3")
-                {
-                    VideoInfo video = videoInfos.Where(info => info.CanExtractAudio).OrderByDescending(info => info.AudioBitrate).FirstOrDefault();
-
-                    if (video.RequiresDecryption)
-                    {
-                        DownloadUrlResolver.DecryptDownloadUrl(video);
-                    }
-
-                    var audioDownloader = new AudioDownloader(video, Path.Combine("C:/Users/johnarnaou/Desktop", video.Title + video.AudioExtension));
-
-                    progressBar1.Value = 0;
-                    progressLB.Text = "Downloading...";
-                    audioDownloader.DownloadProgressChanged += (sender, args) => progressBar1.Value = (int)Math.Round(args.ProgressPercentage * 0.85);
-                    progressLB.Text = "Converting...";
-                    progressBar1.Value = 0;
-                    audioDownloader.AudioExtractionProgressChanged += (sender, args) => progressBar1.Value = (int)Math.Round(args.ProgressPercentage * 0.15);
-                    audioDownloader.Execute();
+                if (video.RequiresDecryption){
+                    DownloadUrlResolver.DecryptDownloadUrl(video);
                 }
 
+                progressLB.Text = "Dowlonading..";
+
+                string file = Path.Combine("C:/Users/johnarnaou/Desktop", video.Title + video.VideoExtension);
+
+                var videoDownloader = new VideoDownloader(video, Path.Combine("C:/Users/johnarnaou/Desktop", video.Title + video.VideoExtension));
+
+                progressBar1.Visible = true;
+                progressBar1.Value = 0;
+
+                videoDownloader.DownloadProgressChanged += (sender, args) => progressBar1.Value = (int)Math.Round(args.ProgressPercentage);
+
+
+                videoDownloader.Execute();
+
+               if(getConvertValue() == "Mp3")
+                {
+                    string prms =  "-y -i " + '"' + file + '"' + " -vn -acodec copy " + " " + '"' + "C:\\Users\\johnarnaou\\Desktop" + "\\" + video.Title + ".m4a" + '"';
+                    progressBar1.Visible = false;
+                    progressLB.Text = "Converting... PLEASE WAIT!";
+                    toMp3Convert(prms);
+                }
+                
                 progressLB.Text = "Done!";
             }
             else
@@ -83,7 +73,41 @@ namespace YouTubeAtei
             }
         }
 
-        private VideoType getVideoType()
+
+        private void toMp3Convert(String parameters)
+        {
+            Process myProcess = new Process();
+            string cmd = parameters;
+            
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.StartInfo.FileName = Application.StartupPath + "\\ffmpeg.exe";
+                Console.WriteLine(Application.StartupPath + "\\ffmpeg.exe");
+                myProcess.StartInfo.Arguments = cmd;
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.StartInfo.RedirectStandardError = true;
+                myProcess.Start();
+
+                while (!myProcess.StandardError.EndOfStream)
+                {
+                    string line = myProcess.StandardError.ReadLine();
+                    if (line.Contains("frame="))
+                    {
+                        String currentFramestr = line.Substring(7, 5);
+                        int currentFrameInt = Int32.Parse(currentFramestr);
+                    }
+                }
+
+                myProcess.WaitForExit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+    private VideoType getVideoType()
         {
             string type = typeBox.SelectedItem.ToString();
 
