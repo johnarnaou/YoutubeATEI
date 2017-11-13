@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTubeAtei", "YouTubeAtei\YouTubeAtei.csproj", "{D8734CA2-C009-41F5-A637-ED0FB44976CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8734CA2-C009-41F5-A637-ED0FB44976CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8734CA2-C009-41F5-A637-ED0FB44976CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8734CA2-C009-41F5-A637-ED0FB44976CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8734CA2-C009-41F5-A637-ED0FB44976CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B692BD06-ECF7-40B8-8FF1-4E54FCE4B5FE}
+	EndGlobalSection
+EndGlobal
