@@ -35,6 +35,10 @@
             this.progressLB = new System.Windows.Forms.Label();
             this.qualityBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.typeBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.convertBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // downBT
@@ -45,6 +49,7 @@
             this.downBT.TabIndex = 0;
             this.downBT.Text = "Download";
             this.downBT.UseVisualStyleBackColor = true;
+            this.downBT.Click += new System.EventHandler(this.downBT_Click);
             // 
             // label1
             // 
@@ -98,15 +103,60 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(269, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Select Video Quality";
+            this.label2.Text = "Select Video Quality:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Type:";
+            // 
+            // typeBox
+            // 
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Items.AddRange(new object[] {
+            "Mp4",
+            "Flash",
+            "Mobile"});
+            this.typeBox.Location = new System.Drawing.Point(47, 52);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(121, 21);
+            this.typeBox.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(148, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Convert To:";
+            // 
+            // convertBox
+            // 
+            this.convertBox.FormattingEnabled = true;
+            this.convertBox.Items.AddRange(new object[] {
+            "Video",
+            "Mp3"});
+            this.convertBox.Location = new System.Drawing.Point(217, 119);
+            this.convertBox.Name = "convertBox";
+            this.convertBox.Size = new System.Drawing.Size(148, 21);
+            this.convertBox.TabIndex = 10;
             // 
             // YoutubeDownloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 302);
+            this.Controls.Add(this.convertBox);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.qualityBox);
             this.Controls.Add(this.progressLB);
@@ -130,6 +180,10 @@
         private System.Windows.Forms.Label progressLB;
         private System.Windows.Forms.ComboBox qualityBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox typeBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox convertBox;
     }
 }
 
