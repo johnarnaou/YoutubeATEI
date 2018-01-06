@@ -39,6 +39,9 @@
             this.typeBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.convertBox = new System.Windows.Forms.ComboBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.BW = new System.ComponentModel.BackgroundWorker();
+            this.ConvertBW = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // downBT
@@ -160,6 +163,22 @@
             this.convertBox.Size = new System.Drawing.Size(148, 21);
             this.convertBox.TabIndex = 10;
             // 
+            // BW
+            // 
+            this.BW.WorkerReportsProgress = true;
+            this.BW.WorkerSupportsCancellation = true;
+            this.BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BW_DoWork);
+            this.BW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BW_ProgressChanged);
+            this.BW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BW_RunWorkerCompleted);
+            // 
+            // ConvertBW
+            // 
+            this.ConvertBW.WorkerReportsProgress = true;
+            this.ConvertBW.WorkerSupportsCancellation = true;
+            this.ConvertBW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ConvertBW_DoWork);
+            this.ConvertBW.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ConvertBW_ProgressChanged);
+            this.ConvertBW.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ConvertBW_RunWorkerCompleted);
+            // 
             // YoutubeDownloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +215,9 @@
         private System.Windows.Forms.ComboBox typeBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox convertBox;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.ComponentModel.BackgroundWorker BW;
+        private System.ComponentModel.BackgroundWorker ConvertBW;
     }
 }
 
